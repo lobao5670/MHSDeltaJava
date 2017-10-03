@@ -1,0 +1,37 @@
+delta dDivisao {
+	adds {
+		package br.mhs.deltaj;
+		
+		public class ExpressaoDivisao implements Expressao {
+			private Expressao esquerda;
+			private Expressao direita;
+			
+			public ExpressaoDivisao(Expressao esquerda, Expressao direita){
+				this.esquerda=esquerda;
+				this.direita=direita;
+			}
+			
+			public Valor avaliar() {
+				Valor left = esquerda.avaliar();
+				Valor right = direita.avaliar();
+				
+				return new ValorInteiro( ((ValorInteiro)left).valor()/((ValorInteiro)right).valor() );
+				
+			}
+		}
+	}
+	adds {
+		package br.mhs.deltaj;
+
+
+		public class Main {
+			public static void main (String args[]) {
+				ValorInteiro n1 = new ValorInteiro(6);
+				ValorInteiro n2 = new ValorInteiro(2);
+				ExpressaoDivisao teste = new ExpressaoDivisao(n1, n2);
+		
+				System.out.println(teste.avaliar().valor());
+			}
+		}	
+	} 
+}

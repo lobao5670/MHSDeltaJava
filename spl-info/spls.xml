@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spls xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../bin/spls.xsd">
+	<spl name="MHS">
+		<features>
+			<feature name ="Soma" />
+			<feature name ="Subtracao" />
+			<feature name ="Multiplicacao" />
+			<feature name ="Divisao" />
+			<feature name ="Comparacao" />
+			<feature name ="ITE" />
+		</features>
+		<configurations>
+			<configuration formula="Soma" />
+		</configurations>
+		<deltas>
+			<partition>
+				<modul delta="dBase" when="Soma" />
+				<modul delta="dSoma" when="Soma" />
+			</partition>
+			<partition>
+				<modul delta="dBase" when="Subtracao" />
+				<modul delta="dSubtracao" when="Subtracao" />
+			</partition>
+			<partition>
+				<modul delta="dBase" when="Multiplicacao" />
+				<modul delta="dMultiplicacao" when="Multiplicacao" />
+			</partition>
+			<partition>
+				<modul delta="dBase" when="Divisao" />
+				<modul delta="dDivisao" when="Divisao" />
+			</partition>
+			<partition>
+				<modul delta="dBase" when="Comparacao" />
+				<modul delta="dCompare" when="Comparacao" />
+			</partition>
+			<partition>
+				<modul delta="dBase" when="ITE" />
+				<modul delta="dITE" when="ITE" />
+			</partition>
+		</deltas>
+	</spl>
+</spls>

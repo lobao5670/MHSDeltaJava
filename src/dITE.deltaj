@@ -1,0 +1,47 @@
+delta dITE {
+	adds {
+		package br.mhs.deltaj;
+		
+		public class ExpressaoITE implements Expressao {
+			private Expressao condicao;
+			private Expressao clausThen;
+			private Expressao clausElse;
+			
+			public ExpressaoITE(Expressao condicao, Expressao clausThen, Expressao clausElse) {
+				this.condicao = condicao;
+				this.clausThen = clausThen;
+				this.clausElse = clausElse;
+			}
+			
+			public Valor avaliar() {
+				Valor cond = condicao.avaliar();
+				Valor cThen = clausThen.avaliar();
+				Valor cElse = clausElse.avaliar();
+				
+				if (((ValorBooleano)cond).valor()) {
+					if(cThen instanceof ValorInteiro) return new ValorInteiro(((ValorInteiro)cThen).valor());
+					else return new ValorBooleano(((ValorBooleano)cThen).valor());
+				}
+				else {
+					if(cElse instanceof ValorInteiro) return new ValorInteiro(((ValorInteiro)cElse).valor());
+					else return new ValorBooleano(((ValorBooleano)cElse).valor());
+				}
+			}
+		}
+	}
+	adds {
+		package br.mhs.deltaj;
+
+
+		public class Main {
+			public static void main (String args[]) {
+				ValorBooleano cond = new ValorBooleano(true);
+				ValorInteiro n1 = new ValorInteiro(1);
+				ValorInteiro n2 = new ValorInteiro(2);
+				ExpressaoITE teste = new ExpressaoITE(cond, n1, cond);
+		
+				System.out.println(teste.avaliar().valor());
+			}
+		}	
+	} 	
+}

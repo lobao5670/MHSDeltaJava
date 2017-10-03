@@ -1,0 +1,28 @@
+SPL MHS {
+
+	Features = {Soma, Subtracao, Multiplicacao, Divisao, Comparacao, ITE}
+
+	Deltas = {dBase, dSoma, dSubtracao, dMultiplicacao, dDivisao, dCompare, dITE}
+
+	Constraints {
+		Soma;
+	}
+
+	Partitions {
+		{dBase, dSoma} when (Soma);
+		{dBase, dSubtracao} when (Subtracao);
+		{dBase, dMultiplicacao} when (Multiplicacao);
+		{dBase, dDivisao} when (Divisao);
+		{dBase, dCompare} when (Comparacao);
+		{dBase, dITE} when (ITE);
+	}
+
+	Products {
+		Soma = {Soma};
+		Subtracao = {Subtracao};
+		Multiplicacao = {Multiplicacao};
+		Divisao = {Divisao};
+		Comparacao = {Comparacao};
+		ITE = {ITE};
+	}
+}
